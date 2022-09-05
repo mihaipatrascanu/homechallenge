@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 api/.env.example
 api/.env.example
+api/composer.lock
+api/.env.example
+api/composer.lock
