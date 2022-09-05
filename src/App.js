@@ -1,12 +1,8 @@
 import './App.css';
-import WalletDashboard from './App/pages/WalletDashboard';
+import AppRoutes from './App/routes/AppRoutes';
 
 function App() {
-  return (
-    <>
-      <WalletDashboard />
-    </>
-  );
+  return <AppRoutes />;
 }
 
 export default App;

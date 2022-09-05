@@ -1,4 +1,7 @@
 # Getting Started
+
 ## In the project directory, you can run:
-##### `npm i` to set up the project
-##### `npm start` to start the development server
+
+##### `yarn` to set up the project
+
+##### `yarn start` to start the development server
