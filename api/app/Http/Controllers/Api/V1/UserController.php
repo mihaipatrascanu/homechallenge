@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\User;
 use App\Models\Token;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -23,10 +24,22 @@ class UserController extends Controller
     public function login(Request $request)
     {
 
-        $validated = $request->validate([
+        // $validated = $request->validate([
+        //     'email' =>'required|string',
+        //     'password'=>'required|string'
+        // ]);
+
+        $validator = Validator::make($request->all(), [
             'email' =>'required|string',
             'password'=>'required|string'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => 'Invalid login credetials','erros'=> $validator->Errors()], 401);
+
+        }
+        
+        $validated = $validator->validated();
 
         if ( !Auth::attempt($validated)) {
             return response()->json(['message' => 'Invalid login credetials'], 401);
