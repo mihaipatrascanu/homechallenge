@@ -1,0 +1,231 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://homechallenge.databees.uk'
+paths:
+  /api/login:
+    post:
+      summary: 'Login User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'User Email address.'
+                  example: mihai@mihai.com
+                password:
+                  type: string
+                  description: 'Users Password.'
+                  example: password
+              required:
+                - email
+                - password
+      security: []
+  /api/currency:
+    get:
+      summary: 'Get all Currencies'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: 'Authorization:'
+          description: ''
+          example: 'Bearer knasa9r4yVgaYgU0lLu1crVamroKhwAxfSDGHzFHvdcwDxzyQU59RjosXRnw'
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/convert:
+    post:
+      summary: 'Convert Currencies'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: 'Authorization:'
+          description: ''
+          example: 'Bearer knasa9r4yVgaYgU0lLu1crVamroKhwAxfSDGHzFHvdcwDxzyQU59RjosXRnw'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: currency_id
+                  description: ''
+                  example: '1'
+                to:
+                  type: currency_id
+                  description: ''
+                  example: '3'
+                value:
+                  type: value_for_conversion
+                  description: ''
+                  example: '100'
+      security: []
+  /api/verify:
+    post:
+      summary: 'Verify Refresh Token'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: 'Authorization:'
+          description: ''
+          example: 'Bearer knasa9r4yVgaYgU0lLu1crVamroKhwAxfSDGHzFHvdcwDxzyQU59RjosXRnw'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh_token:
+                  type: string
+                  description: ''
+                  example: knasa9r4yVgaYgU0lLu1crVamroKhwAxfSDGHzFHvdcwDxzyQU59RjosXRnw
+              required:
+                - refresh_token
+      security: []
+  /api/refresh:
+    post:
+      summary: 'Refresh Refresh Token'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: 'Authorization:'
+          description: ''
+          example: 'Bearer knasa9r4yVgaYgU0lLu1crVamroKhwAxfSDGHzFHvdcwDxzyQU59RjosXRnw'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh_token:
+                  type: string
+                  description: ''
+                  example: knasa9r4yVgaYgU0lLu1crVamroKhwAxfSDGHzFHvdcwDxzyQU59RjosXRnw
+              required:
+                - refresh_token
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

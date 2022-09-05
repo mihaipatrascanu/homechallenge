@@ -53,7 +53,8 @@ class TokenController extends Controller
     {
 
         $validated = $this->validate($request, 
-                            ["refresh_token" => "string"]);
+                    ["refresh_token" => "string"]);
+
         $user = Auth::guard('api')->user();
 
         if($user){
@@ -68,7 +69,7 @@ class TokenController extends Controller
                 $token->expires_at = Now()->addSeconds(60);
                 $token->save();
 
-                return response()->json(['email' => $user->email,'access_token' => $user->api_token,'refresh_token' => $token->refresh_token], 200);
+                return response()->json(['access_token' => $user->api_token,'refresh_token' => $token->refresh_token], 200);
             }                    
 
         }
